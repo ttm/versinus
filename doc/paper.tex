@@ -56,6 +56,14 @@ a number of methods have been proposed to visualize them.
 %
 \section{Introduction}
 The visualization of evolving networks poses challenges related to data size and complexity which have merited various contributions~\cite{evo1,evo2,evo3}.
+In fact, the meaningful visualization of time-evolving networks is a well-known problem in information visualization (\emph{infovis}) and dynamic network analysis (\emph{DNA}).
+In this work, we present a novel approach in DNA infovis that consists in distributing the nodes along a fixed layout that consists in three segments for three sections (or partitions) of a scale-free network, namely for the hub, intermediary and peripheral nodes~\cite{stab}. The development of the network is expressed by changes in node height, width, color, format, and by changes in link disposition, thickness and color. Also, auxiliary global and local information are be displayed in order to enable a sound analysis of the features of interest.
+The method has been called Versinus since its early usages in 2013, because the layout stabilized, after trying many figures, in a sine period and a line, which in Latin is \emph{sinus} (sine) and \emph{versus} (line). 
+Versinus has received four software implementations, two of them written in Python scripts that yield animations through stop-motion. The other two are written in JavaScript, one of them is an exploitation for static networks, the other is an ongoing Visual Analytics interface which extends the description in this document for 3D with additional analysis techniques such as principal component analysis (PCA).
+The writing of this document was motivated by its usefulness in scientific research~\cite{stab,thesis} and the benefit of a careful mathematical and technological description of the procedures involved in applying the method to real networks.
+
+The article is organized as follows. Next subsections hold remarks about related work and vocabulary. Section~\ref{sec:des} describes the method in detail and sufficient formalism. Section~\ref{sec:imp} is depicts the software implementations of Versinus. Section~\ref{sec:ins} is dedicated to revealing further insights obtained through the use of the method. Finally, Section~\ref{sec:con} convene concluding and further work commentaries.
+
 \subsection{Related work}
 % on animated visualization
 % on vis of evo nets
@@ -64,12 +72,16 @@ Evolving network visualization has been tackled both through animated and static
 The contribution reported in this document is singular in consisting basically of a network layout which is fit for scale-free characteristics, together with some visualization artifacts dependent of the implementation.
 The collection of procedures and conceptualizations involved in the achieving the final visualization were also considered worth documenting as were not found elsewhere in the literature, designed simple and genuine, and found of scientific relevance~\cite{stab}.
 
-\subsection{Nomenclature}
+\subsection{Nomenclature remarks}
+Evolving networks are also called e.g. logitudinal networks, time-evolving networks, dynamic networks.
+We chose the term ``evolving network'' herein because it is simple, is semantically reasonable, and has been very much in use.
+The other main issue in current vocabulary is in the phrase ``section of a network'' (e.g. of the hubs). In most cases, the sections are also a partitions (i.e. they are non-overlaping sets whose union is the complete superset), but it depends of the criteria for obtaining the sectors~\cite{stab}, thus the use of the more general vocable \emph{section}.
+Moreover, network science is very multidisciplinary and context-dependent, and flourished from the ill-defined area of complex systems, favoring polysemy and synonymy. We strove to avoid such issues because they are usually not convenient in scientific literature.
 
-\section{A description of the method}
-\section{Software implementations}
-\section{Insights gathered}
-\section{Conclusions and further work}
+\section{A description of the method}\label{sec:des}
+\section{Software implementations}\label{sec:imp}
+\section{Insights gathered}\label{sec:ins}
+\section{Conclusions and further work}\label{sec:con}
 %
 % ---- Bibliography ----
 %
