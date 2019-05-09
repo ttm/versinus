@@ -79,6 +79,43 @@ The other main issue in current vocabulary is in the phrase ``section of a netwo
 Moreover, network science is very multidisciplinary and context-dependent, and flourished from the ill-defined area of complex systems, favoring polysemy and synonymy. We strove to avoid such issues because they are usually not convenient in scientific literature.
 
 \section{A description of the method}\label{sec:des}
+Versinus is essentially obtained through placing the nodes in segments
+with respect to their overall topological features, and then representing
+instantaneous topological features though gliph and arrow attributes.
+The visualization may be divided thus in three stages, described in the following subsections.
+
+\subsection{Node placement}
+First, a network is constructed with all the activity of interest, i.e. all the transactions, such as all the email messages considered or all the links in a data file.
+The nodes are then ordered either by degree or strength (or in- or out- degree or strength), from greatest to smallest values.
+Also from such global network, the hubs, intermediary and peripheral sectors are obtained. Two methods have been proven useful for obtaining such sectors: 1) assuming fixed fractions of hubs (e.g. 5\%), of intermediary (e.g. 15\%) and peripheral nodes (e.g. 80\%); 2) by comparison of the network against the Erdös-Rényi model, a not trivial procedure carefully described in~\cite{stab}.
+
+With such structures at hand, the nodes are placed along three segments.
+The hubs are placed along the first half of a sine period.
+The intermediary nodes are placed along the second half of the sine period.
+The peripheral nodes are placed along an indepentent line.
+Such placement is depicted in Figure~\ref{fig:glob}.
+
+% \begin{figure}
+% \includegraphics[width=.5\textwidth]{versinus_}
+% \caption{A figure caption is always placed below the illustration.
+% Please note that short captions are centered, while long ones are
+% justified by the macro package automatically.} \label{fig1}
+% \end{figure}
+
+The parameters of the placement are:
+\begin{itemize}
+  \item the horizontal margin, i.e. the distance from the left border to the first hubs, assumed the same as the distance from the right border to last intermediary node.
+  \item The amplitude of the sine segment.
+  \item The positions $(x0,y0)$ and $(x1,y1)$, i.e. the endpoints of the segment for the peripheral sector.
+\end{itemize}
+
+\noindent Avoiding clutter with the hubs motivated both 
+the positioning of the peripheral sector in the upper-right corner and
+the placement of the most active peripheral nodes next to the intermediary sector, i.e. the ordering along the peripheral line.
+
+\subsection{Drawing nodes, links and auxiliary information}
+\subsection{Observation of the evolving network}
+
 \section{Software implementations}\label{sec:imp}
 \section{Insights gathered}\label{sec:ins}
 \section{Conclusions and further work}\label{sec:con}
