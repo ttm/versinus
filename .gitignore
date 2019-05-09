@@ -1,0 +1,16 @@
+data/
+paper.aux
+paper.bbl
+paper.blg
+paper.log
+docOLD/paper.aux
+docOLD/paper.bbl
+docOLD/paper.blg
+docOLD/paper.log
+docOLD/paperNotes.bib
+docOLD/tempo/
+# ../legacy/este.png
+# ../legacy/sistema.png
+# ../legacy/sistemaMinimo_5000.py
+# ../legacy/v1lad/
+

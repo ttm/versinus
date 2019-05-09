@@ -93,23 +93,23 @@ With such structures at hand, the nodes are placed along three segments.
 The hubs are placed along the first half of a sine period.
 The intermediary nodes are placed along the second half of the sine period.
 The peripheral nodes are placed along an indepentent line.
-Such placement is depicted in Figure~\ref{fig:glob}.
-
-% \begin{figure}
-% \includegraphics[width=.5\textwidth]{versinus_}
-% \caption{A figure caption is always placed below the illustration.
-% Please note that short captions are centered, while long ones are
-% justified by the macro package automatically.} \label{fig1}
-% \end{figure}
-
-The parameters of the placement are:
+Such placement is depicted in Figure~\ref{fig:glob} with
+the basic parameters:
 \begin{itemize}
-  \item the horizontal margin, i.e. the distance from the left border to the first hubs, assumed the same as the distance from the right border to last intermediary node.
-  \item The amplitude of the sine segment.
-  \item The positions $(x0,y0)$ and $(x1,y1)$, i.e. the endpoints of the segment for the peripheral sector.
+  \item the amplitude $\alpha$ of the sine oscillation.
+  \item The displacement $\Delta$ of the sine in the vertical axis.
+  \item the horizontal margin $\mu$, i.e. the distance from the left border to the first hubs, assumed the same as the distance from the right border to last intermediary node.
+  \item The positions $(x_0,y_0)$ and $(x_1,y_1)$, i.e. the endpoints of the segment for the peripheral sector.
 \end{itemize}
 
-\noindent Avoiding clutter with the hubs motivated both 
+\begin{figure}[!h]\centering
+\includegraphics[width=.7\textwidth]{nodePositioning}
+  \caption{The underlying layout of Versinus. Most connected nodes are positioned from left to right on the sine segment (for the hubs and intermediary sectors), and from right to left on the upper line (for the periphery sector). The parameters are: amplitude $\alpha$ of the oscillation; vertical displacement $\Delta$ of the oscillation; horizontal margin $\mu$; and line endpoints $(x_0, y_0)$ and $(x_1, y_1)$.}\label{fig1}
+\end{figure}
+
+Some crafty notes: fine-tunning of the size of each sector (number of nodes) may come handy due to the density of nodes in each segment and due to their activity. Also, the node positioned at the middle of the sine period may be a hub or an intermediary node, and this choice often impacts final visualization clarity more than predicted by intuition.
+Finally, 
+avoiding clutter with the hubs motivated both 
 the positioning of the peripheral sector in the upper-right corner and
 the placement of the most active peripheral nodes next to the intermediary sector, i.e. the ordering along the peripheral line.
 
