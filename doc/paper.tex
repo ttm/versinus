@@ -178,14 +178,35 @@ These last two implementations are illustrated in Figure~\ref{fig:extra}.
     \label{fig:extra}
 \end{figure}
 
+\subsection{Network sonification}
+The implementation in Figure~\ref{fig:extra} (b) includes a sonification routine for the evolving network. The results were of very modest effectiveness for the user in the sense that it did not enable one to grasp network features.
+Nevertheless, it made the (audio)visualization more interesting, and it is the first time the authors appreciated a sonification of an evolving network (maybe even of any network), and is thus probably a unique multimedia representation of networks.
+Accordingly, we believe valid a description of the sonification as it was left implemented: the lower noise has central frequency proportional to first hub connectivity, at extreme left on the layout, on the start of the cosine. Changes each two tempos. The higher noise has central frequency proportional to the second hub, and also changes every two tempos. The third hub connectivity is proportional to the lower note, which is incident once a beat. The fourth hub connectivity is proportional to the higher note, one note occurring twice every half-beat.
+
 \section{Insights gathered}\label{sec:ins}
 Valueable insights were obtained by the design and use of Versinus.
-For example, the visualization of network structures are favoured by the positoning of vertices in a oscillatory pattern. In fact, this principle was implemented in some of the layouts available within ccNetViz, and it may be useful in other well-known layouts, such as the Hive Plot~\cite{hive}.
+For example, the visualization of network structures are favoured by the positoning of vertices in a oscillatory pattern. In fact, this principle was implemented in some of the layouts available within ccNetViz, and it may be useful in other well-known layouts, such as the Hive Plot~\cite{hive}. The use of only one period for the sine is arbitrary and was established because it entailed good visualizations for the networks and tasks at hand during its desing, but is allowed to vary in more recent implementations.
 Another important insight is the pertinece of fixed positions for the observation of evolving networks. Not only this has the potential to help ammeliorate the hairball effect~\cite{hairball}, but it is most often very difficult to keep track of individual nodes and structures when the nodes are allowed to move in the images, as in a force-based layout.
+The positioning of nodes with respect to their topological features (nodes are ordered by connectivity, segments are related to network sectors) revealed very useful.
+Visual cues such as node width, height, shape and color was found very informative for individual nodes but resulted in a cognitive overload for the observation of global features, which motivates simplified versions.
+The sonification of the evolving network added to the exotic flavour of Versinus and made it more attracive. It seems that more informative sonifications will require a dedicated work, training of already musically competent users, and very modest goals. 
 Furthermore, reasonable parametrization (e.g. through $\alpha$, $\Delta$, $\mu$, $(x_0, y_0)$, $(x_1, y_1)$, $\sigma$, $\eta$ and $\omega$) are very dependent of the network and intended tasks, and calls for interactive interfaces and automated indication of initial values.
 
-\section{Conclusions and further work}\label{sec:con}
 
+\section{Conclusions and further work}\label{sec:con}
+Within this document, we achieved a first sound description of the Versinus method, with its formal elements, use context and software implementations.
+The validity of Versinus is implied both by its use in published research scenarios and the insights it yielded on individual networks and network layouts in general.
+Further developments using the method are already being made, with focus on interactivity and Web technologies, such as WebGL and the use of well-polished JavaScript libraries.
+
+Next steps include
+automated tunning of Versinus parametrization, 
+implementation of cues for relating language incident in the networks to their topology, and
+further visually representing topological features (e.g. the fraction of interaction of the intermediary sector with the hubs and with the periphery).
+The experimentation of Versinus features within other layouts is a potentially
+valuable contribution, e.g. wiggling the segments of a Hive Plot~\cite{hive}.
+Most importantly, we aim at completing the Visual Analytics utility,
+enabling the use of Versinus in an interactive environment, for enhanced exploratory analysis.
+Finally, we plan to further analysing datasets of evolving networks~\cite{stab}.
 
 
 %
