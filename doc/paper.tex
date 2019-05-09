@@ -105,7 +105,9 @@ the basic parameters:
 
 \begin{figure}[!h]\centering
 \includegraphics[width=.7\textwidth]{nodePositioning}
-  \caption{The underlying layout of Versinus. Most connected nodes are positioned from left to right on the sine segment (for the hubs and intermediary sectors), and from right to left on the upper line (for the periphery sector). The parameters are: amplitude $\alpha$ of the oscillation; vertical displacement $\Delta$ of the oscillation; horizontal margin $\mu$; and line endpoints $(x_0, y_0)$ and $(x_1, y_1)$.}\label{fig1}
+  \caption{The underlying layout of Versinus. Most connected nodes are positioned from left to right on the sine segment (for the hubs and intermediary sectors), and from right to left on the upper line (for the periphery sector). The parameters are: amplitude $\alpha$ of the oscillation; vertical displacement $\Delta$ of the oscillation; horizontal margin $\mu$; and line endpoints $(x_0, y_0)$ and $(x_1, y_1)$.
+   Further information is given in Section~\ref{sec:des}.
+  }\label{fig1}
 \end{figure}
 
 \noindent Some crafty notes: fine-tunning of the size of each sector (number of nodes) may come handy due to the density of nodes in each segment and due to their activity. Also, the node positioned at the middle of the sine period may be a hub or an intermediary node, and this choice often impacts final visualization clarity more than predicted by intuition.
@@ -142,10 +144,13 @@ Also, node-specific information may be displayed by blinking the information onv
 Figure~\ref{fig:final} examplifies two flavours of Versinus settings.
 
 \begin{figure}[!h]\centering
-  \subfloat[Versinus flavour A]{{\includegraphics[width=.46\textwidth]{im31} }}%
+    \subfloat[Versinus flavour A]{{\includegraphics[width=.46\textwidth, height=4.3cm]{versinus_} }}%
     \qquad
-    \subfloat[Versinus flavour B]{{\includegraphics[width=.46\textwidth]{versinus_} }}%
-    \caption{Two frames of animations achieved using the Versinus method. In (a), a cleaner version of Versinus is used to display a snapshot in which the only hub is the overall hub, the second overall hub is a peripheral node in the snapshot, and nodes most nodes have high clustering coefficient. The legend indicates that the total number of transactions is $T=3998$, the window size $\sigma=40$, the step size is $\eta=40$, the transaction rate is $\omega=4$, current snapshot starts at transaction 1240, and the snapshot has 13 nodes and 15 links. In (b) the individual degrees in the snapshot is blinking over the nodes, and the nodes are counted in auxiliary lines along the bottom and the near the periphery line. Current image/snapshot is 911 and the snapshot has 116 nodes and 262 links.}%
+  \subfloat[Versinus flavour B]{{\includegraphics[width=.46\textwidth, height=4.3cm]{im31} }}%
+    \caption{Two frames of animations achieved using the Versinus method. In (a) the individual degrees in the snapshot is blinking over the nodes, and the nodes are counted in auxiliary lines along the bottom and the near the periphery line. Current image/snapshot is 911 and the snapshot has 116 nodes and 262 links.
+   In (b), a cleaner version of Versinus is used to display a snapshot in which the only hub is the overall hub, the second overall hub is a peripheral node in the snapshot, and nodes most nodes have high clustering coefficient. The legend indicates that the total number of transactions is $T=3998$, the window size $\sigma=40$, the step size is $\eta=40$, the transaction rate is $\omega=4$, current snapshot starts at transaction 1240, and the snapshot has 13 nodes and 15 links.
+   Further information is given in Section~\ref{sec:des}.
+   }%
     \label{fig:final}%
 \end{figure}
 
@@ -159,6 +164,20 @@ In this context, it is natural to ask if such stability is also noticeable in in
 as suggested by~\cite{barabasiEvo}, all hubs were found to have intermittent activity in social networks, except for the smallest networks analysed.
 
 \section{Software implementations}\label{sec:imp}
+There are four software implementations of Versinus.
+Two of them are written in Python: one is a script that renders animations as in the Figure~\ref{fig:final} (a), with more cues of local structure. The other is a library that renders animations as in the Figure~\ref{fig:final} (a), simpler and with more cues of the overall structure.
+The other two implementations are in JavaScript and uses WebGL. One is for static (non-evolving) networks, implemented as part of the ccNetViz library, that aim at being as computationally inexpensive as possible. The other is implemented in a 3D Visual Analytics utility which is linked to more analytical techniques, such as principal component analysis, overview first - focus on demand, simultaneous highlighting of corresponding structures across images as required by user.
+These last two implementations are illustrated in Figure~\ref{fig:extra}.
+
+\begin{figure}[!h]\centering
+    \subfloat[Versinus in JavaScript A]{{\includegraphics[width=.46\textwidth, height=2.5cm]{ccNetViz} }}%
+    \qquad
+  \subfloat[Versinus in JavaScript B]{{\includegraphics[width=.46\textwidth]{visAn} }}%
+    \caption{The two implementations of Versinus in JavaScript using WebGL. In (a) is an image of the implementation in ccNetViz, a library with the purpose of being computationally inexpensive. This implementation is only for static networks. In (b) is an image of the implementation in a Visual Analytics utility being developed. This latter software render the animations in real time, with multiple controls for inspecting the network struture and controlling the animation, in conjuntion with other analysis techniques. Further information is given in Section~\ref{sec:imp}.}
+    \label{fig:extra}
+\end{figure}
+
+
 \section{Insights gathered}\label{sec:ins}
 \section{Conclusions and further work}\label{sec:con}
 %
