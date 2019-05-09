@@ -6,6 +6,8 @@
 %
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 % Used for displaying a sample figure. If possible, figure files should
 % be included in EPS format.
 %
@@ -107,13 +109,30 @@ the basic parameters:
   \caption{The underlying layout of Versinus. Most connected nodes are positioned from left to right on the sine segment (for the hubs and intermediary sectors), and from right to left on the upper line (for the periphery sector). The parameters are: amplitude $\alpha$ of the oscillation; vertical displacement $\Delta$ of the oscillation; horizontal margin $\mu$; and line endpoints $(x_0, y_0)$ and $(x_1, y_1)$.}\label{fig1}
 \end{figure}
 
-Some crafty notes: fine-tunning of the size of each sector (number of nodes) may come handy due to the density of nodes in each segment and due to their activity. Also, the node positioned at the middle of the sine period may be a hub or an intermediary node, and this choice often impacts final visualization clarity more than predicted by intuition.
+\noindent Some crafty notes: fine-tunning of the size of each sector (number of nodes) may come handy due to the density of nodes in each segment and due to their activity. Also, the node positioned at the middle of the sine period may be a hub or an intermediary node, and this choice often impacts final visualization clarity more than predicted by intuition.
 Finally, 
 avoiding clutter with the hubs motivated both 
 the positioning of the peripheral sector in the upper-right corner and
 the placement of the most active peripheral nodes next to the intermediary sector, i.e. the ordering along the peripheral line.
 
 \subsection{Drawing nodes, links and auxiliary information}
+For visualizing the evolving network, further concepts and quantities need to be defined.
+A \emph{snapshot} $S$ consists of a number $\sigma$ time-contiguous transactions, e.g. of 100 email messages, starting at an arbitrary message.
+The separation $\eta$ between each snapshot is the number of transactions skipped from one snapshot to the next.
+In summary, the evolving network is visualized through a sliding window of $\sigma$ transactions, updated each $\eta$ transactions. To achieve the final animation, one need also to define a transaction rate $\omega$.
+Thus, these parameters are specified:
+\begin{itemize}
+  \item the window $\sigma$ captured at each snapshot, expressed in transactions.
+  \item The step size $\eta$ between each snapshot, expressed in transactions.
+  \item The transaction rate $\omega$, expressed in transactions per second.
+\end{itemize}
+
+\noindent The sequence of snapshots may be expressed as $\{S_i^{\sigma, \eta}\}_0^{L}$, where $L$ is the smallest integer such that $L\times \eta + \sigma > T$ and $T$ is the total number of transactions. Notice that the last snapshot will not necessarily have $\sigma$ transactions, but may have less than $\sigma$. Also, the rate $\omega$ is only applied when rendering the animation. E.g. if each snapshot $S_i$ yields an image, the stop motion animation will use $\omega/\eta$ images per second to achieve the desired rate of $\omega$ transactions per second.
+
+Finally, auxiliary information may be given by a persistent legend that displays essential information such as $\sigma$, $\eta$, $\omega$ and $T$, and keeps track of current snapshot along e.g. the number of nodes and edges of the snapshot.
+Also, node-specific information may be displayed by blinking the information onver the nodes periodically or displaying them with a vertical displacement.
+Figure~\ref{fig:final} examplifies two flavours of Versinus settings.
+
 \subsection{Observation of the evolving network}
 
 \section{Software implementations}\label{sec:imp}
