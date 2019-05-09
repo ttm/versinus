@@ -6,8 +6,7 @@
 %
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
-\usepackage{mathtools}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\usepackage{subfig}
 % Used for displaying a sample figure. If possible, figure files should
 % be included in EPS format.
 %
@@ -129,11 +128,35 @@ Thus, these parameters are specified:
 
 \noindent The sequence of snapshots may be expressed as $\{S_i^{\sigma, \eta}\}_0^{L}$, where $L$ is the smallest integer such that $L\times \eta + \sigma > T$ and $T$ is the total number of transactions. Notice that the last snapshot will not necessarily have $\sigma$ transactions, but may have less than $\sigma$. Also, the rate $\omega$ is only applied when rendering the animation. E.g. if each snapshot $S_i$ yields an image, the stop motion animation will use $\omega/\eta$ images per second to achieve the desired rate of $\omega$ transactions per second.
 
+In each snapshot, the entailed network is analysed in terms of the sectors (hubs, intermediary and periphery), in and out degree (or strength if proffered) and clustering coefficient. Then the visual mapping of information is performed in the following way:
+\begin{itemize}
+  \item nodes not incident in the snapshot are not shown. Nodes incident in the snapshot is given a minimum width and height.
+  \item Node sector in the snapshot is mapped to node shape (e.g. hexagon, circle and diamond for hub, intermediary and peripheral node).
+  \item Node width is incremented proportinally to its in-degree (or out-strength if preferred). Node height is incremented proportionally to its out-degree (or out-strength if preffered).
+  \item Node color is related to clustering coefficient, e.g. zero is mapped to white, one is pure red, and intermediary values are scaled accordingly.
+  \item Link weight is mapped to link width or a color scale.
+\end{itemize}
+
 Finally, auxiliary information may be given by a persistent legend that displays essential information such as $\sigma$, $\eta$, $\omega$ and $T$, and keeps track of current snapshot along e.g. the number of nodes and edges of the snapshot.
 Also, node-specific information may be displayed by blinking the information onver the nodes periodically or displaying them with a vertical displacement.
 Figure~\ref{fig:final} examplifies two flavours of Versinus settings.
 
+\begin{figure}[!h]\centering
+  \subfloat[Versinus flavour A]{{\includegraphics[width=.46\textwidth]{im31} }}%
+    \qquad
+    \subfloat[Versinus flavour B]{{\includegraphics[width=.46\textwidth]{versinus_} }}%
+    \caption{Two frames of animations achieved using the Versinus method. In (a), a cleaner version of Versinus is used to display a snapshot in which the only hub is the overall hub, the second overall hub is a peripheral node in the snapshot, and nodes most nodes have high clustering coefficient. The legend indicates that the total number of transactions is $T=3998$, the window size $\sigma=40$, the step size is $\eta=40$, the transaction rate is $\omega=4$, current snapshot starts at transaction 1240, and the snapshot has 13 nodes and 15 links. In (b) the individual degrees in the snapshot is blinking over the nodes, and the nodes are counted in auxiliary lines along the bottom and the near the periphery line. Current image/snapshot is 911 and the snapshot has 116 nodes and 262 links.}%
+    \label{fig:final}%
+\end{figure}
+
 \subsection{Observation of the evolving network}
+Within the settings described, one may notice a number of network characteristics: do nodes alter their sectors often? Is the overall intermediary sector in greater activity with the hubs or periphery?
+Do higher clustering really occur most often in the less connected nodes?
+Are there very unbalanced nodes with respect to in and out degree (or strength)?
+Are the number of nodes and edges stable along the network evolution?
+In fact, Versinus was partly designed to inspect network attributes due to the remarkable stablity of their overall characteristics reported in~\cite{stab}.
+In this context, it is natural to ask if such stability is also noticeable in individual nodes, and, 
+as suggested by~\cite{barabasiEvo}, all hubs were found to have intermittent activity in social networks, except for the smallest networks analysed.
 
 \section{Software implementations}\label{sec:imp}
 \section{Insights gathered}\label{sec:ins}
