@@ -165,6 +165,7 @@ as suggested by~\cite{barabasiEvo}, all hubs were found to have intermittent act
 
 \section{Software implementations}\label{sec:imp}
 There are four software implementations of Versinus.
+For oranization and brevity, these are all linked in one repository~\cite{verRepo} together with this document.
 Two of them are written in Python: one is a script that renders animations as in the Figure~\ref{fig:final} (a), with more cues of local structure. The other is a library that renders animations as in the Figure~\ref{fig:final} (a), simpler and with more cues of the overall structure.
 The other two implementations are in JavaScript and uses WebGL. One is for static (non-evolving) networks, implemented as part of the ccNetViz library, that aim at being as computationally inexpensive as possible. The other is implemented in a 3D Visual Analytics utility which is linked to more analytical techniques, such as principal component analysis, overview first - focus on demand, simultaneous highlighting of corresponding structures across images as required by user.
 These last two implementations are illustrated in Figure~\ref{fig:extra}.
@@ -173,13 +174,20 @@ These last two implementations are illustrated in Figure~\ref{fig:extra}.
     \subfloat[Versinus in JavaScript A]{{\includegraphics[width=.46\textwidth, height=2.5cm]{ccNetViz} }}%
     \qquad
   \subfloat[Versinus in JavaScript B]{{\includegraphics[width=.46\textwidth]{visAn} }}%
-    \caption{The two implementations of Versinus in JavaScript using WebGL. In (a) is an image of the implementation in ccNetViz, a library with the purpose of being computationally inexpensive. This implementation is only for static networks. In (b) is an image of the implementation in a Visual Analytics utility being developed. This latter software render the animations in real time, with multiple controls for inspecting the network struture and controlling the animation, in conjuntion with other analysis techniques. Further information is given in Section~\ref{sec:imp}.}
+    \caption{The two implementations of Versinus in JavaScript using WebGL. In (a) is an image of the implementation in ccNetViz, a library with the purpose of being computationally inexpensive. This implementation is only for static networks. In (b) is an image of the implementation in a Visual Analytics utility being developed. This latter software render the animations in real time, with multiple controls for inspecting the network struture and controlling the animation, in conjuntion with other analysis techniques. Also, the sine oscilates both in the vertical and depth axes, as does the periphery segment. Further information is given in Section~\ref{sec:imp}.}
     \label{fig:extra}
 \end{figure}
 
-
 \section{Insights gathered}\label{sec:ins}
+Valueable insights were obtained by the design and use of Versinus.
+For example, the visualization of network structures are favoured by the positoning of vertices in a oscillatory pattern. In fact, this principle was implemented in some of the layouts available within ccNetViz, and it may be useful in other well-known layouts, such as the Hive Plot~\cite{hive}.
+Another important insight is the pertinece of fixed positions for the observation of evolving networks. Not only this has the potential to help ammeliorate the hairball effect~\cite{hairball}, but it is most often very difficult to keep track of individual nodes and structures when the nodes are allowed to move in the images, as in a force-based layout.
+Furthermore, reasonable parametrization (e.g. through $\alpha$, $\Delta$, $\mu$, $(x_0, y_0)$, $(x_1, y_1)$, $\sigma$, $\eta$ and $\omega$) are very dependent of the network and intended tasks, and calls for interactive interfaces and automated indication of initial values.
+
 \section{Conclusions and further work}\label{sec:con}
+
+
+
 %
 % ---- Bibliography ----
 %
