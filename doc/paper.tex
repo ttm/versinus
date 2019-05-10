@@ -183,6 +183,13 @@ The implementation in Figure~\ref{fig:extra} (b) includes a sonification routine
 Nevertheless, it made the (audio)visualization more interesting, and it is the first time the authors appreciated a sonification of an evolving network (maybe even of any network), and is thus probably a unique multimedia representation of networks.
 Accordingly, we believe valid a description of the sonification as it was left implemented: the lower noise has central frequency proportional to first hub connectivity, at extreme left on the layout, on the start of the cosine. Changes each two tempos. The higher noise has central frequency proportional to the second hub, and also changes every two tempos. The third hub connectivity is proportional to the lower note, which is incident once a beat. The fourth hub connectivity is proportional to the higher note, one note occurring twice every half-beat.
 
+\subsection{Animations produced and available}\label{sec:vid}
+Many animations were obtained through the routines described.
+These encompassed different networks and settings ($\alpha$, $\sigma$, $\eta$,
+etc), and different flavours of Versinus.
+Some of these animations are available in six playlists of Youtube videos.
+For organization and brevity, they are also available at~\cite{verRepo}.
+
 \section{Insights gathered}\label{sec:ins}
 Valueable insights were obtained by the design and use of Versinus.
 For example, the visualization of network structures are favoured by the positoning of vertices in a oscillatory pattern. In fact, this principle was implemented in some of the layouts available within ccNetViz, and it may be useful in other well-known layouts, such as the Hive Plot~\cite{hive}. The use of only one period for the sine is arbitrary and was established because it entailed good visualizations for the networks and tasks at hand during its desing, but is allowed to vary in more recent implementations.
@@ -191,7 +198,6 @@ The positioning of nodes with respect to their topological features (nodes are o
 Visual cues such as node width, height, shape and color was found very informative for individual nodes but resulted in a cognitive overload for the observation of global features, which motivates simplified versions.
 The sonification of the evolving network added to the exotic flavour of Versinus and made it more attracive. It seems that more informative sonifications will require a dedicated work, training of already musically competent users, and very modest goals. 
 Furthermore, reasonable parametrization (e.g. through $\alpha$, $\Delta$, $\mu$, $(x_0, y_0)$, $(x_1, y_1)$, $\sigma$, $\eta$ and $\omega$) are very dependent of the network and intended tasks, and calls for interactive interfaces and automated indication of initial values.
-
 
 \section{Conclusions and further work}\label{sec:con}
 Within this document, we achieved a first sound description of the Versinus method, with its formal elements, use context and software implementations.
