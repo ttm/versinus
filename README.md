@@ -12,9 +12,19 @@ It has since then received three implementations:
 * a Javascript implementation in [ccNetViz](https://github.com/HelikarLab/ccNetViz) for static networks.
 * a Javascript implementation using BabylonJS for interactive data analysis (Visual Analytics).
 
-## found scripts
+### found scripts
 * gmaneLegacy makes audio and png files
 * sistemaMinimo_5000.py may have the most advanced implementation of all...
+
+### available videos
+Some animations obtained using the Versinus method (and the scripts mentioned above) 
+are available in the following playlists:
+* https://www.youtube.com/playlist?list=PLf_EtaMqu3jWYQiJZYhVlJVngb7vsf6na
+* https://www.youtube.com/playlist?list=PLf_EtaMqu3jVFS_AJZm_HuO9pywnSWaNF
+* https://www.youtube.com/playlist?list=PLf_EtaMqu3jUZpAX3cKPC5J0t3q836CLy
+* https://www.youtube.com/playlist?list=PLf_EtaMqu3jVb7CTt59t3ZnrmXuG0N3cO
+* https://www.youtube.com/playlist?list=PLf_EtaMqu3jU-1j4jiIUiyMqyVSzIYeh6
+* https://www.youtube.com/playlist?list=PLf_EtaMqu3jVodaqDjN7yaSgsQx2Xna3d
 
 ## further info
 To render the stop-motion animations, you may use ffmpeg. E.g.:
