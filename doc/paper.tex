@@ -22,8 +22,8 @@
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
 %
-\author{Renato Fabbri\inst{1}\orcidID{0000-0002-9699-629X} \and
-Maria Cristina Ferreira de Oliveira\inst{1}\orcidID{0000-0002-4729-5104}}
+\author{Renato Fabbri\orcidID{0000-0002-9699-629X} \and
+Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
 %
 \authorrunning{R. Fabbri and M. C. F. de Oliveira}
 % First names are abbreviated in the running head.
@@ -39,14 +39,14 @@ Maria Cristina Ferreira de Oliveira\inst{1}\orcidID{0000-0002-4729-5104}}
 \begin{abstract}
 % The abstract should briefly summarize the contents of the paper in
 % 150--250 words.
-Most real world networks change over time with new nodes and links or their removal, or even with metadata modification.
+Most real-world networks change over time with new nodes and links or their removal, and their representation may involve metadata variation.
 Increasing interest in modeling evolving networks has been reported and
-a number of methods have been proposed to visualize them.  
-  This article presents a novel visualization approach for (time-)evolving (or longitudinal) networks,
-  specially useful for the observation of (in)stability of basic topological characteristics.
-  The method has received a few software implementations and has been useful in research and publication, which motivated the writing of this present document.
-  Named Versinus, the visualization consists essentially in placing the most connected nodes (hubs and intermediary) along a sine curve, and the peripheral nodes nodes along a separate segment, usually a line.
-  Thus its name from  Latin \emph{versus} (line) and \emph{sinus} (sine).
+a number of procedures have been proposed to visualize them.
+  This article presents a novel visualization method for evolving (or longitudinal, or time-evolving) networks,
+  specially useful in the observation of (in)stability of basic topological characteristics.
+  The method has received a few software implementations and has been useful for research and publication, which motivated the writing of this present document.
+  Named Versinus, the visualization consists essentially in placing the most connected nodes (hubs and intermediary) along a sine curve, and the peripheral nodes along a separate segment, usually a line.
+  Thus its name, from  Latin \emph{versus} (line) and \emph{sinus} (sine).
   The method has provided insights into network properties and for network visualizations, which are described here after a formal presentation of the visualization and yielded software.
 
 
@@ -56,27 +56,27 @@ a number of methods have been proposed to visualize them.
 %
 %
 \section{Introduction}
-The visualization of evolving networks poses challenges related to data size and complexity which have merited various contributions~\cite{evo1,evo2,evo3}.
+The visualization of evolving networks poses challenges related to data size and complexity which have merited various contributions~\cite{evo1,evo3,evo2}.
 In fact, the meaningful visualization of time-evolving networks is a well-known problem in information visualization (\emph{infovis}) and dynamic network analysis (\emph{DNA}).
-In this work, we present a novel approach in DNA infovis that consists in distributing the nodes along a fixed layout that consists in three segments for three sections (or partitions) of a scale-free network, namely for the hub, intermediary and peripheral nodes~\cite{stab}. The development of the network is expressed by changes in node height, width, color, format, and by changes in link disposition, thickness and color. Also, auxiliary global and local information are be displayed in order to enable a sound analysis of the features of interest.
+In this work, we present a novel approach in DNA infovis that consists in distributing the nodes along a fixed layout that consists in three segments for three sectors (or partitions) of a scale-free network, namely for the hub, intermediary and peripheral nodes~\cite{stab}. The development of the network is expressed by changes in node height, width, color, format, and by changes in link disposition, thickness and color. Also, auxiliary global and local information are be displayed in order to enable a sound analysis with the features of interest.
 The method has been called Versinus since its early usages in 2013, because the layout stabilized, after trying many figures, in a sine period and a line, which in Latin is \emph{sinus} (sine) and \emph{versus} (line). 
-Versinus has received four software implementations, two of them written in Python scripts that yield animations through stop-motion. The other two are written in JavaScript, one of them is an exploitation for static networks, the other is an ongoing Visual Analytics interface which extends the description in this document for 3D with additional analysis techniques such as principal component analysis (PCA).
-The writing of this document was motivated by its usefulness in scientific research~\cite{stab,thesis} and the benefit of a careful mathematical and technological description of the procedures involved in applying the method to real networks.
+Versinus has received four software implementations, two of them written in Python scripts and packages that yield animations through stop-motion. The other two are written in JavaScript, one of them is an exploitation for static networks, the other is an ongoing Visual Analytics interface which extends the description in this document for 3D with additional analysis techniques such as principal component analysis (PCA) and structure navigation.
+The writing of this document was motivated by the usefulness of the method in scientific research~\cite{thesis,stab} and the benefit of a careful mathematical and technological description of the procedures involved in applying the method to real networks.
 
-The article is organized as follows. Next subsections hold remarks about related work and vocabulary. Section~\ref{sec:des} describes the method in detail and sufficient formalism. Section~\ref{sec:imp} is depicts the software implementations of Versinus. Section~\ref{sec:ins} is dedicated to revealing further insights obtained through the use of the method. Finally, Section~\ref{sec:con} convene concluding and further work commentaries.
+The article is organized as follows. Next subsections hold remarks about related work and vocabulary. Section~\ref{sec:des} describes the method in detail and sufficient formalism. Section~\ref{sec:imp} depicts the software implementations of Versinus and resulted animations. Section~\ref{sec:ins} is dedicated to revealing further insights obtained through the use of the method. Finally, Section~\ref{sec:con} assemble concluding commentaries and further work.
 
 \subsection{Related work}
 % on animated visualization
 % on vis of evo nets
-Although animation is often criticized in the data visualization canonical literature~\cite{munzner,ware}, advantages have also been reported~\cite{cog,anim} e.g. making visuallizations more eye catching and due to the fact that we are accustumed to moving through the world and to moving objects.
+Although animation is often criticized in the data visualization canonical literature, advantages have also been reported~\cite{anim,munzner,cog,ware} e.g. making visuallizations more eye catching and due to the fact that we are accustumed to moving through the world and to moving objects.
 Evolving network visualization has been tackled both through animated and static (often timeline-based) visualizations~\cite{ego,brain,visAn}, focusing on various global and local network features.
-The contribution reported in this document is singular in consisting basically of a network layout which is fit for scale-free characteristics, together with some visualization artifacts dependent of the implementation.
-The collection of procedures and conceptualizations involved in the achieving the final visualization were also considered worth documenting as were not found elsewhere in the literature, designed simple and genuine, and found of scientific relevance~\cite{stab}.
+The contribution reported in this document is singular in consisting basically of a network layout which is fit for scale-free characteristics, together with some visualization cues dependent on the implementation, and in being the result of extensive attempts to reach a satisfactory visualization by theoretical and intuitive strategies and methodical verification of the result by appreciation of the entailed animations.
+The procedures and conceptualizations involved in the achieving the final visualization were also considered worth documenting as they were not found elsewhere in the literature, were designed simple and genuine, and found of scientific relevance~\cite{stab}.
 
 \subsection{Nomenclature remarks}
 Evolving networks are also called e.g. logitudinal networks, time-evolving networks, dynamic networks.
 We chose the term ``evolving network'' herein because it is simple, is semantically reasonable, and has been very much in use.
-The other main issue in current vocabulary is in the phrase ``section of a network'' (e.g. of the hubs). In most cases, the sections are also a partitions (i.e. they are non-overlaping sets whose union is the complete superset), but it depends of the criteria for obtaining the sectors~\cite{stab}, thus the use of the more general vocable \emph{section}.
+The other main issue in current vocabulary is in the phrase ``sector of a network'' (e.g. of the hubs). In most cases, the sectors are also partitions (i.e. they are non-overlaping sets whose union is the complete superset), but it depends of the criteria for obtaining the sectors~\cite{stab}, thus the use of the more general vocable \emph{sector}.
 Moreover, network science is very multidisciplinary and context-dependent, and flourished from the ill-defined area of complex systems, favoring polysemy and synonymy. We strove to avoid such issues because they are usually not convenient in scientific literature.
 
 \section{A description of the method}\label{sec:des}
@@ -85,10 +85,10 @@ with respect to their overall topological features, and then representing
 instantaneous topological features though gliph and arrow attributes.
 The visualization may be divided thus in three stages, described in the following subsections.
 
-\subsection{Node placement}
+\subsection{Node placement}\label{sec:pla}
 First, a network is constructed with all the activity of interest, i.e. all the transactions, such as all the email messages considered or all the links in a data file.
 The nodes are then ordered either by degree or strength (or in- or out- degree or strength), from greatest to smallest values.
-Also from such global network, the hubs, intermediary and peripheral sectors are obtained. Two methods have been proven useful for obtaining such sectors: 1) assuming fixed fractions of hubs (e.g. 5\%), of intermediary (e.g. 15\%) and peripheral nodes (e.g. 80\%); 2) by comparison of the network against the Erdös-Rényi model, a not trivial procedure carefully described in~\cite{stab}.
+Also from such global network, the hubs, intermediary and peripheral sectors are obtained. Two methods have been proven useful for obtaining such sectors: 1) assuming fixed fractions of hubs (e.g. 5\%), of intermediary (e.g. 15\%) and peripheral nodes (e.g. 80\%); 2) by comparison of the network against the Erdös-Rényi model, a non-trivial procedure, with relevant analytical results, carefully described in~\cite{stab}.
 
 With such structures at hand, the nodes are placed along three segments.
 The hubs are placed along the first half of a sine period.
@@ -106,8 +106,8 @@ the basic parameters:
 \begin{figure}[!h]\centering
 \includegraphics[width=.7\textwidth]{nodePositioning}
   \caption{The underlying layout of Versinus. Most connected nodes are positioned from left to right on the sine segment (for the hubs and intermediary sectors), and from right to left on the upper line (for the periphery sector). The parameters are: amplitude $\alpha$ of the oscillation; vertical displacement $\Delta$ of the oscillation; horizontal margin $\mu$; and line endpoints $(x_0, y_0)$ and $(x_1, y_1)$.
-   Further information is given in Section~\ref{sec:des}.
-  }\label{fig1}
+   Further information is given in Section~\ref{sec:pla}.
+  }\label{fig:glob}
 \end{figure}
 
 \noindent Some crafty notes: fine-tunning of the size of each sector (number of nodes) may come handy due to the density of nodes in each segment and due to their activity. Also, the node positioned at the middle of the sine period may be a hub or an intermediary node, and this choice often impacts final visualization clarity more than predicted by intuition.
@@ -128,19 +128,19 @@ Thus, these parameters are specified:
   \item The transaction rate $\omega$, expressed in transactions per second.
 \end{itemize}
 
-\noindent The sequence of snapshots may be expressed as $\{S_i^{\sigma, \eta}\}_0^{L}$, where $L$ is the smallest integer such that $L\times \eta + \sigma > T$ and $T$ is the total number of transactions. Notice that the last snapshot will not necessarily have $\sigma$ transactions, but may have less than $\sigma$. Also, the rate $\omega$ is only applied when rendering the animation. E.g. if each snapshot $S_i$ yields an image, the stop motion animation will use $\omega/\eta$ images per second to achieve the desired rate of $\omega$ transactions per second.
+\noindent The sequence of snapshots may be expressed as $\{S_i^{\sigma, \eta}\}_0^{L}$, where $L$ is the smallest integer such that $L\times \eta + \sigma > T$ and $T$ is the total number of transactions. Notice that the last snapshot $S_L$ will not necessarily have $\sigma$ transactions, but may have less than $\sigma$. Also, the rate $\omega$ is only applied when rendering the animation. E.g. if each snapshot $S_i$ yields an image, the stop motion animation will use $\omega/\eta$ images per second to achieve the desired rate of $\omega$ transactions per second.
 
 In each snapshot, the entailed network is analysed in terms of the sectors (hubs, intermediary and periphery), in and out degree (or strength if proffered) and clustering coefficient. Then the visual mapping of information is performed in the following way:
 \begin{itemize}
   \item nodes not incident in the snapshot are not shown. Nodes incident in the snapshot is given a minimum width and height.
-  \item Node sector in the snapshot is mapped to node shape (e.g. hexagon, circle and diamond for hub, intermediary and peripheral node).
+  \item Node sector in the snapshot is mapped to node shape (e.g. hexagon, circle and diamond for hub, intermediary and peripheral nodes).
   \item Node width is incremented proportinally to its in-degree (or out-strength if preferred). Node height is incremented proportionally to its out-degree (or out-strength if preffered).
   \item Node color is related to clustering coefficient, e.g. zero is mapped to white, one is pure red, and intermediary values are scaled accordingly.
-  \item Link weight is mapped to link width or a color scale.
+  \item Link weight is mapped to link width and/or a color scale.
 \end{itemize}
 
 Finally, auxiliary information may be given by a persistent legend that displays essential information such as $\sigma$, $\eta$, $\omega$ and $T$, and keeps track of current snapshot along e.g. the number of nodes and edges of the snapshot.
-Also, node-specific information may be displayed by blinking the information onver the nodes periodically or displaying them with a vertical displacement.
+Also, node-specific information may be displayed by blinking corresponding cues over the nodes periodically or displaying them with a vertical displacement.
 Figure~\ref{fig:final} examplifies two flavours of Versinus settings.
 
 \begin{figure}[!h]\centering
@@ -148,14 +148,14 @@ Figure~\ref{fig:final} examplifies two flavours of Versinus settings.
     \qquad
   \subfloat[Versinus flavour B]{{\includegraphics[width=.46\textwidth, height=4.3cm]{im31} }}%
     \caption{Two frames of animations achieved using the Versinus method. In (a) the individual degrees in the snapshot is blinking over the nodes, and the nodes are counted in auxiliary lines along the bottom and the near the periphery line. Current image/snapshot is 911 and the snapshot has 116 nodes and 262 links.
-   In (b), a cleaner version of Versinus is used to display a snapshot in which the only hub is the overall hub, the second overall hub is a peripheral node in the snapshot, and nodes most nodes have high clustering coefficient. The legend indicates that the total number of transactions is $T=3998$, the window size $\sigma=40$, the step size is $\eta=40$, the transaction rate is $\omega=4$, current snapshot starts at transaction 1240, and the snapshot has 13 nodes and 15 links.
+   In (b), a cleaner version of Versinus is used to display a snapshot in which the only hub is the overall hub, the second overall hub is a peripheral node, and most nodes have high clustering coefficients. The legend indicates that the total number of transactions is $T=3998$, the window size $\sigma=40$, the step size is $\eta=40$, the transaction rate is $\omega=4$, current snapshot starts at transaction 1240, and the snapshot has 13 nodes and 15 links.
    Further information is given in Section~\ref{sec:des}.
    }%
     \label{fig:final}%
 \end{figure}
 
 \subsection{Observation of the evolving network}
-Within the settings described, one may notice a number of network characteristics: do nodes alter their sectors often? Is the overall intermediary sector in greater activity with the hubs or periphery?
+Within the settings described, one may notice a number of network characteristics: do nodes (or a specific node) change their sectors often? Is the overall intermediary sector in greater activity with the hubs or periphery?
 Do higher clustering really occur most often in the less connected nodes?
 Are there very unbalanced nodes with respect to in and out degree (or strength)?
 Are the number of nodes and edges stable along the network evolution?
@@ -165,54 +165,55 @@ as suggested by~\cite{barabasiEvo}, all hubs were found to have intermittent act
 
 \section{Software implementations}\label{sec:imp}
 There are four software implementations of Versinus.
-For oranization and brevity, these are all linked in one repository~\cite{verRepo} together with this document.
+For organization and brevity, these are all linked in this repository:~\cite{verRepo}, together with this document.
 Two of them are written in Python: one is a script that renders animations as in the Figure~\ref{fig:final} (a), with more cues of local structure. The other is a library that renders animations as in the Figure~\ref{fig:final} (a), simpler and with more cues of the overall structure.
-The other two implementations are in JavaScript and uses WebGL. One is for static (non-evolving) networks, implemented as part of the ccNetViz library, that aim at being as computationally inexpensive as possible. The other is implemented in a 3D Visual Analytics utility which is linked to more analytical techniques, such as principal component analysis, overview first - focus on demand, simultaneous highlighting of corresponding structures across images as required by user.
+The other two implementations are in JavaScript and uses WebGL. One is for static (non-evolving) networks, implemented as part of the ccNetViz library, that aims at being as computationally inexpensive as possible~\cite{cell}. The other is implemented in an under-development 3D Visual Analytics utility in which Versinus is combined with other analytical techniques, such as principal component analysis, overview first - focus on demand, and simultaneous highlighting of corresponding structures across images as required by user.
 These last two implementations are illustrated in Figure~\ref{fig:extra}.
 
 \begin{figure}[!h]\centering
     \subfloat[Versinus in JavaScript A]{{\includegraphics[width=.46\textwidth, height=2.5cm]{ccNetViz} }}%
     \qquad
   \subfloat[Versinus in JavaScript B]{{\includegraphics[width=.46\textwidth]{visAn} }}%
-    \caption{The two implementations of Versinus in JavaScript using WebGL. In (a) is an image of the implementation in ccNetViz, a library with the purpose of being computationally inexpensive. This implementation is only for static networks. In (b) is an image of the implementation in a Visual Analytics utility being developed. This latter software render the animations in real time, with multiple controls for inspecting the network struture and controlling the animation, in conjuntion with other analysis techniques. Also, the sine oscilates both in the vertical and depth axes, as does the periphery segment. Further information is given in Section~\ref{sec:imp}.}
+    \caption{The two implementations of Versinus in JavaScript using WebGL. In (a) is an image of the implementation in ccNetViz, a library with the purpose of being computationally inexpensive. This implementation is only for static networks. In (b) is an image of the Versinus implementation in a Visual Analytics utility being developed. This latter software render the animations in real time, with multiple controls for inspecting the network struture and controlling the animation, in conjunction with other analysis techniques. Also, the sine oscilates both in the vertical and depth axes, as does the periphery segment. Further information is given in Section~\ref{sec:imp}.}
     \label{fig:extra}
 \end{figure}
 
 \subsection{Network sonification}
-The implementation in Figure~\ref{fig:extra} (b) includes a sonification routine for the evolving network. The results were of very modest effectiveness for the user in the sense that it did not enable one to grasp network features.
+The implementation illustrated in Figure~\ref{fig:final} (b) includes a sonification routine for the evolving network.
+The results were of very modest effectiveness in the sense that it does not enable the user to grasp network features with ease, specially if the user is not musically trained.
 Nevertheless, it made the (audio)visualization more interesting, and it is the first time the authors appreciated a sonification of an evolving network (maybe even of any network), and is thus probably a unique multimedia representation of networks.
-Accordingly, we believe valid a description of the sonification as it was left implemented: the lower noise has central frequency proportional to first hub connectivity, at extreme left on the layout, on the start of the cosine. Changes each two tempos. The higher noise has central frequency proportional to the second hub, and also changes every two tempos. The third hub connectivity is proportional to the lower note, which is incident once a beat. The fourth hub connectivity is proportional to the higher note, one note occurring twice every half-beat.
+Accordingly, we believe valid a description of the sonification as it was left implemented, i.e. in its final version: the lower noise has central frequency proportional to first hub connectivity, at the extreme left on the layout, on the start of the sine, and it updated each two tempos. The higher noise has central frequency proportional to the second hub, and is also updated every two tempos. The third hub connectivity is proportional to the lower note, which is incident once a beat. The fourth hub connectivity is proportional to the higher note, one note occurring twice every half-beat.
 
 \subsection{Animations produced and available}\label{sec:vid}
 Many animations were obtained through the routines described.
 These encompassed different networks and settings ($\alpha$, $\sigma$, $\eta$,
 etc), and different flavours of Versinus.
 Some of these animations are available in six playlists of Youtube videos.
-For organization and brevity, they are also available at~\cite{verRepo}.
+For organization and brevity, they are available at~\cite{verRepo} together with other Versinus-related resources.
 
 \section{Insights gathered}\label{sec:ins}
 Valueable insights were obtained by the design and use of Versinus.
-For example, the visualization of network structures are favoured by the positoning of vertices in a oscillatory pattern. In fact, this principle was implemented in some of the layouts available within ccNetViz, and it may be useful in other well-known layouts, such as the Hive Plot~\cite{hive}. The use of only one period for the sine is arbitrary and was established because it entailed good visualizations for the networks and tasks at hand during its desing, but is allowed to vary in more recent implementations.
+For example, the visualization of network structures are favoured by the positoning of nodes in an oscillatory pattern. In fact, this principle was implemented in some of the layouts available within ccNetViz, and it may be useful in other well-known layouts, such as the Hive Plot~\cite{hive}. The use of only one period for the sine is arbitrary and was established because it entailed good visualizations for the networks and tasks at hand during the desing of Versinus, but is allowed to vary in more recent implementations.
 Another important insight is the pertinece of fixed positions for the observation of evolving networks. Not only this has the potential to help ammeliorate the hairball effect~\cite{hairball}, but it is most often very difficult to keep track of individual nodes and structures when the nodes are allowed to move in the images, as in a force-based layout.
-The positioning of nodes with respect to their topological features (nodes are ordered by connectivity, segments are related to network sectors) revealed very useful.
-Visual cues such as node width, height, shape and color was found very informative for individual nodes but resulted in a cognitive overload for the observation of global features, which motivates simplified versions.
-The sonification of the evolving network added to the exotic flavour of Versinus and made it more attracive. It seems that more informative sonifications will require a dedicated work, training of already musically competent users, and very modest goals. 
+The positioning of nodes with respect to their topological features (nodes are ordered by connectivity, segments are related to network sectors) revealed very useful for understanding network features, such as stability and connectivity dependant behaviors.
+Visual cues such as node width, height, shape and color were found informative for individual nodes but resulted in a cognitive overload for the observation of global features, which motivates simplified versions.
+The sonification of the evolving network added to the exotic flavour of Versinus and made it more attractive. It seems that more informative sonifications will require a dedicated work, training of already musically competent users, and very modest goals. 
 Furthermore, reasonable parametrization (e.g. through $\alpha$, $\Delta$, $\mu$, $(x_0, y_0)$, $(x_1, y_1)$, $\sigma$, $\eta$ and $\omega$) are very dependent of the network and intended tasks, and calls for interactive interfaces and automated indication of initial values.
 
 \section{Conclusions and further work}\label{sec:con}
-Within this document, we achieved a first sound description of the Versinus method, with its formal elements, use context and software implementations.
+Within this document, we achieved a first thorough description of the Versinus method, with its formal elements, use context and software implementations.
 The validity of Versinus is implied both by its use in published research scenarios and the insights it yielded on individual networks and network layouts in general.
 Further developments using the method are already being made, with focus on interactivity and Web technologies, such as WebGL and the use of well-polished JavaScript libraries.
 
 Next steps include
-automated tunning of Versinus parametrization, 
+automated tunning of Versinus parameters, 
 implementation of cues for relating language incident in the networks to their topology, and
 further visually representing topological features (e.g. the fraction of interaction of the intermediary sector with the hubs and with the periphery).
 The experimentation of Versinus features within other layouts is a potentially
 valuable contribution, e.g. wiggling the segments of a Hive Plot~\cite{hive}.
 Most importantly, we aim at completing the Visual Analytics utility,
 enabling the use of Versinus in an interactive environment, for enhanced exploratory analysis.
-Finally, we plan to further analysing datasets of evolving networks~\cite{stab}.
+Finally, we plan to further analyze datasets of evolving networks~\cite{stab} using Versinus.
 
 
 %
