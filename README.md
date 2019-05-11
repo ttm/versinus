@@ -2,19 +2,19 @@
 Versinus: a visualization method for time-evolving networks
 
 ## documentation
-Current best documentation is the article in the doc/ directory and available in arXiv: https://arxiv.org/abs/1412.7311
+Current best documentation is the article in the doc/ directory,
+and the resources in this repository.
+
+There is also a dummy and less recent article available in arXiv: https://arxiv.org/abs/1412.7311
 
 ## implementations
 Versinus was conceived while probing stability of social networks
 and was found to be very useful.
-It has since then received three implementations:
-* a Python+FFmpeg that renders animations though stop-motion.
-* a Javascript implementation in [ccNetViz](https://github.com/HelikarLab/ccNetViz) for static networks.
-* a Javascript implementation using BabylonJS for interactive data analysis (Visual Analytics).
-
-### found scripts
-* gmaneLegacy makes audio and png files
-* sistemaMinimo_5000.py may have the most advanced implementation of all...
+It has since then received four implementations:
+* a Python script that renders animations though stop-motion, available in legacy/sistemaMinimo_5000Py3.py
+* Python functionalities made available though packages. These packages enable the rendering of animations with soundtracks, both obtained by mapping of the evolving network. The packages needed are [gmaneLegacy](https://github.com/ttm/gmaneLegacy) and [musicLegacy](https://github.com/ttm/musicLegacy). After installing them, run the script tests/testEvolutionMusicPy3.py in the gmaneLegacy tree.
+* a lightweight Javascript implementation in [ccNetViz](https://github.com/HelikarLab/ccNetViz) for static networks.
+* a Javascript implementation using BabylonJS for interactive data analysis (Visual Analytics): https://github.com/ttm/netText.
 
 ### available videos
 Some animations obtained using the Versinus method (and the scripts mentioned above) 
@@ -28,13 +28,10 @@ are available in the following playlists:
 
 ## further info
 To render the stop-motion animations, you may use ffmpeg. E.g.:
-$ ffmpeg -r 25 -i "%05d.png" totoro.mp4
+$ ffmpeg -r 25 -i "%05d.png" versinus.mp4
 
 And use ffmpeg again to add the sound track:
-$ ffmpeg -i video.avi -i audio.mp3 -codec copy -shortest output.avi
-Issues:
-* how to control the number of images/second used. -r seems to be only the final framerate.
-* how to input the sound file rendered?
+$ ffmpeg -i video.avi -i audio.mp3 -codec copy -shortest versinus.avi
 
 ### repositories
 * https://github.com/ttm/gmaneLegacy
@@ -43,8 +40,8 @@ Issues:
 * https://github.com/ttm/gmaneMessages
 * https://github.com/ttm/gmane
 
-
 ## about
 Please refer to the VICG/ICMC group for more information or contact me at:
 renato [DOT] fabbri {at} gmail (dot) com
 
+:::
