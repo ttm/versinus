@@ -48,8 +48,6 @@ a number of procedures have been proposed to visualize them.
   Thus its name, from  Latin \emph{versus} (line) and \emph{sinus} (sine).
   The Versinus visualization can provide insight into network properties and is useful for observing its behavior, as described in this paper, after a formal presentation of the method and its associated software implementations.
 \keywords{Network visualization
-12
-
 \and Dynamic networks
 \and Longitudinal networks
 \and Time-evolving networks
@@ -106,7 +104,7 @@ The peripheral nodes are placed along an independent line.
 The placement follows 
 the basic parameters:
 \begin{itemize}
-  \item the amplitude $\alpha$ of the sine oscillation.
+  \item The amplitude $\alpha$ of the sine oscillation.
   \item The displacement $\Delta$ of the sine in the vertical axis.
   \item The horizontal margin $\mu$, i.e. the distance from the left border to the first hubs, assumed the same as the distance from the right border to last intermediary node.
   \item The positions $(x_0,y_0)$ and $(x_1,y_1)$, i.e. the endpoints of the segment for the peripheral sector.
@@ -131,16 +129,16 @@ The separation $\eta$ between each snapshot is the number of transactions skippe
 In summary, the evolving network is visualized through a sliding window of $\sigma$ transactions, updated at every $\eta$ transactions. To achieve the final animation, a transaction rate $\omega$ must also be defined.
 Thus, the following parameters are specified:
 \begin{itemize}
-  \item the window $\sigma$ captured at each snapshot, expressed in transactions.
-  \item the step size $\eta$ between each snapshot, expressed in transactions.
-  \item the transaction rate $\omega$, expressed in transactions per second.
+  \item The window $\sigma$ captured at each snapshot, expressed in transactions.
+  \item The step size $\eta$ between each snapshot, expressed in transactions.
+  \item The transaction rate $\omega$, expressed in transactions per second.
 \end{itemize}
 
 \noindent The sequence of snapshots may be expressed as $\{S_i^{\sigma, \eta}\}_0^{L}$, where $L$ is the smallest integer such that $L\times \eta + \sigma > T$ and $T$ is the total number of transactions. Notice that the final snapshot $S_L$ may have less than $\sigma$ transactions. Also, the rate $\omega$ is only applied when rendering the animation, e.g. if each snapshot $S_i$ yields an image, the stop motion animation will use $\omega/\eta$ images per second to achieve the desired rate of $\omega$ transactions per second.
 
 In each snapshot, the entailed network is analyzed in terms of the sectors (hubs, intermediary and periphery), in and out degree (or strength, if preferred) and clustering coefficient. Then the visual mapping of information is performed as follows:
 \begin{itemize}
-  \item nodes not incident in the snapshot are not shown. Glyphs associated with nodes incident in the snapshot are assigned a minimum width and height.
+  \item Nodes not incident in the snapshot are not shown. Glyphs associated with nodes incident in the snapshot are assigned a minimum width and height.
   \item The node sector in the snapshot is mapped to a glyph shape (e.g. circle, hexagon and diamond for hub, intermediary and peripheral nodes, respectively).
   \item Node width is incremented proportionally to its in-degree (or out-strength, if preferred). Node height is incremented proportionally to its out-degree (or out-strength if preferred).
   \item Node color is related to clustering coefficient, e.g. zero is mapped to white, one is pure red, and intermediary values are scaled accordingly.
@@ -192,7 +190,7 @@ These last two implementations are illustrated in Figure~\ref{fig:extra}.
     \label{fig:extra}
 \end{figure}
 
-\subsection{Network sonification}
+\subsection{Network sonification}\label{sson}
 The implementation illustrated in Figure~\ref{fig:final} (b) includes a sonification routine for the evolving network.
 Results are of limited effectiveness in the sense that the sonification does not enable users to grasp network features with ease,
 specially if they are not musically trained.
@@ -203,19 +201,66 @@ Accordingly, we understand suitable to provide a short description of the sonifi
 i.e. in its final version,
 even though a full understanding of the summary requires knowledge of musical theory.
 Four sonic/musical voices are used, two of them are noises and the other two have defined pitch. The lower noise has central frequency proportional to first hub connectivity,
-which is the node positioned at the extreme left on the layout, on the starting point of the sine, and its frequency is updated each two tempos.
-The higher noise has central frequency proportional to the second hub, the node next to the first hub, and its frequency is also updated every two tempos.
+which is the node positioned at the extreme left on the layout, on the starting point of the sine, and its frequency is updated every two beats.
+The higher noise has central frequency proportional to the second hub, the node next to the first hub, and its frequency is updated at each beat.
 The third hub connectivity is proportional to the lower note,
-which is incident once a beat, and has its note value updated accordingly.
-The fourth hub connectivity is proportional to the higher note, which is incident twice every half-beat, is updated every note, and is only heard on the second half-beat of every tempo.
+which is incident once a beat, and has its note value updated at every beat.
+The fourth hub connectivity is proportional to the higher note, which is incident twice every half-beat, is updated at every note, and is only heard on the second half-beat of every tempo.
 Figure~\ref{fson} illustrates such disposition of sonic lines (or musical voices).
 
+\begin{figure}[!h]\centering
+\includegraphics[width=.9\textwidth]{sonif}
+  \caption{Visual representation of the sonification implemented for the dynamic networks.
+  $c_f$ and $f_0$ stands for \emph{center frequency} and \emph{fundamental frequency}, respectively.
+  Further details are given in Section~\ref{sson}.
+  }\label{fson}
+\end{figure}
+
 \subsection{Animations produced and available}\label{sec:vid}
-Many animations were obtained through the routines described.
-These encompassed different networks and settings ($\alpha$, $\sigma$, $\eta$,
+A number of animations were obtained through the routines described.
+These encompassed different networks, settings ($\alpha$, $\sigma$, $\eta$,
 etc), and different flavors of Versinus.
-Some of these animations are available in six playlists of Youtube videos.
-For organization and brevity, they are available at~\cite{verRepo} together with other Versinus-related resources.
+Some of these visualizations are available in six playlists of Youtube videos.
+For organization and brevity, they are available at~\footnote{Pivot repository for Versinus resources such as implementations, public instances of interactive interfaces, and videos: https://github.com/ttm/versinus} together with other Versinus-related resources.
+
+\subsection{An experimental Visual Analytics interface}
+This section exemplifies the employment of the Versinus method
+within a more elaborate framework.
+Let us consider an interactive visual interface, with which the user may parametrize Versinus and then navigate through the entailed dynamic network.
+
+\begin{figure}[!h]\centering
+\includegraphics[width=\textwidth]{esfNetVis___}
+  \caption{
+  }\label{esfnetvis}
+\end{figure}
+
+
+\begin{figure}[!h]\centering
+\includegraphics[width=\textwidth]{esfNetVis2___}
+  \caption{
+  }\label{esfnetvis}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\includegraphics[width=\textwidth]{esfNetVis3}
+  \caption{
+  }\label{esfnetvis}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\includegraphics[width=\textwidth]{esfNetVis4}
+  \caption{
+  }\label{esfnetvis}
+\end{figure}
+One basic feature of the method is the constant representation of
+nodes in each of the hubs, intermediary and peripheral sectors.
+Nodes are positioned according to such classification regarding all
+the activity of interest, and in each snapshot visual cues map the
+classification within the snapshot.
+Following the analytic methods used in~\cite{stab}, it may be crucial
+to know how the relative sizes of the sectors vary along time, i.e. along
+the sequence of snapshots.
+
 
 \section{Insights gathered}\label{sec:ins}
 This section describes insights gathered by the authors,
@@ -224,7 +269,7 @@ suitable validation methods.
 The legitimacy of the exposition herein given is based on the reasonable aspect of the assertions, and on the facts that the authors developed Versinus, used the method extensively, and the scientific contribution which it made possible~\cite{stab}.
 
 The visualization of network structures is favored by the placement of nodes in an oscillatory pattern, as it tends to decrease the superposition of nodes and links. In fact, this principle was implemented in some of the layouts available within ccNetViz, and it may be useful in other well-known layouts, such as the Hive Plot~\cite{hive}.
-Using a single period for the sine is an arbitrary choice, established because it entailed good visualizations for the networks and tasks at hand during the design of Versinus. Nonetheless, it is allowed to vary in more recent implementations in JavaScript listed in~\footnote{Pivot repository for Versinus resources such as implementations, public instances of interactive interfaces, and videos: https://github.com/ttm/versinus}: the sine in which the hub and intermediary nodes are positioned may have as many periods as parametrized by the analyst, and the same is feature is available for the segment for the peripheral nodes.
+Using a single period for the sine is an arbitrary choice, established because it entailed good visualizations for the networks and tasks at hand during the design of Versinus. Nonetheless, it is allowed to vary in more recent implementations in JavaScript\footnote{Pivot repository for Versinus resources such as implementations, public instances of interactive interfaces, and videos: https://github.com/ttm/versinus}: the sine in which the hub and intermediary nodes are positioned may have as many periods as parametrized by the analyst, and the same is feature is available for the segment for the peripheral nodes.
 Another important insight is the pertinence of fixed positions for the observation of evolving networks.
 Not only this has the potential to reduce the hairball effect~\cite{hairball},
 but it is most often very difficult to keep track of individual nodes and structures when the nodes are allowed to move in the images while the network evolves, as in force-based layouts.
