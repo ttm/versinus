@@ -209,7 +209,7 @@ The fourth hub connectivity is proportional to the higher note, which is inciden
 Figure~\ref{fson} illustrates such disposition of sonic lines (or musical voices).
 
 \begin{figure}[!h]\centering
-\includegraphics[width=.9\textwidth]{sonif}
+\includegraphics[width=0.7\textwidth]{sonif}
   \caption{Visual representation of the sonification implemented for the dynamic networks.
   $c_f$ and $f_0$ stands for \emph{center frequency} and \emph{fundamental frequency}, respectively.
   Further details are given in Section~\ref{sson}.
@@ -223,34 +223,56 @@ etc), and different flavors of Versinus.
 Some of these visualizations are available in six playlists of Youtube videos.
 For organization and brevity, they are available at~\footnote{Pivot repository for Versinus resources such as implementations, public instances of interactive interfaces, and videos: https://github.com/ttm/versinus} together with other Versinus-related resources.
 
-\subsection{An experimental Visual Analytics interface}
-This section exemplifies the employment of the Versinus method
+\subsection{An experimental visual analytics interface}
+This section exemplifies the employment of the Versinus network visualization method
 within a more elaborate framework.
 Let us consider an interactive visual interface, with which the user may parametrize Versinus and then navigate through the entailed dynamic network.
+A most fundamental Versinus parametrization is performed before the visual mapping of the network, and is illustrated in Figure~\ref{env1}.
+Initial visualization is illustrated in Figure~\ref{env2}.
+Figures~\ref{env3} and~\ref{env4} exemplifies Versinus compliant interactive data visualization analytical procedures: the observation of the fraction of nodes in each sector, characteristics of individual nodes and of snapshots.
+The interactive interface is named $ESFNetVis$ (after ``Evolutive Scale Free Network Visualization''). At\footnote{Pivot repository for Versinus resources such as implementations, public instances of interactive interfaces, and videos: https://github.com/ttm/versinus} are directions for the code and a publicly accessible instance of $ESFNetVis$.
 
 \begin{figure}[!h]\centering
-\includegraphics[width=\textwidth]{esfNetVis___}
-  \caption{
-  }\label{esfnetvis}
+\includegraphics[width=0.7\textwidth]{esfNetVis___}
+  \caption{Visual elements for settings performed previous to the visual mapping of Versinus.
+  The buttons on the top are for keeping, modifying and accessing settings.
+  The Widgets in the gray rectangles are for selecting the network, selecting the first and last messages (transactions) to be considered,
+  and the sectorialization method.
+  The widgets in the white rectangle are $\sigma$, $\eta$, and $\omega$.
+  These settings are compliant with the description available in Section~\ref{sec:des}.
+  When the red button is clicked, the dynamic network is mapped to the canvas and additional elements, as described in Figure~\ref{env2}.
+  }\label{env1}
 \end{figure}
 
 
 \begin{figure}[!h]\centering
-\includegraphics[width=\textwidth]{esfNetVis2___}
-  \caption{
-  }\label{esfnetvis}
+\includegraphics[width=0.7\textwidth]{esfNetVis2___}
+  \caption{The initial visualization of the dynamic network performed using $ESFNetVis$.
+  In the canvas, the network is mapping using a 3D extension of Versinus, in which both segments oscillates vertically and in depth.
+  The red portions of the links denotes the direction of the link (often performed using arrow heads).
+  The text area starts with overall information of the collection of snapshots (e.g. each snapshot yields a mean degree, the set of snapshots yields a mean of such mean degree and a standard deviation of the mean degree.
+  The timelines hold the fractions of nodes in each sector with orange, green and blue for hub, intermediary and peripheral nodes.
+  The red bar is the playback cue, i.e. the snapshot being visualized.
+  The analyst may play and pause with the play button,
+  and rewind with the rewind button, both to the right.
+  }\label{env2}
 \end{figure}
 
 \begin{figure}[!h]\centering
-\includegraphics[width=\textwidth]{esfNetVis3}
-  \caption{
-  }\label{esfnetvis}
+\includegraphics[width=0.7\textwidth]{esfNetVis3}
+  \caption{The layout is slightly rotated in order to focus on the peripheral nodes segment. This image depicts one of the interaction possibilities among the canvas and the timelines: when the mouse is over a node, the line of the sector of the node in the snapshot is made black.
+  (Notice the pointer in ``button-mode'', i.e. visualized as a hand.)
+  Also, the text area in this image shows information about specific nodes, provided on-demand (the user hits the key ``i'' when the mouse is over a node for the interface to provide the information). 
+  }\label{env3}
 \end{figure}
 
 \begin{figure}[!h]\centering
-\includegraphics[width=\textwidth]{esfNetVis4}
+\includegraphics[width=0.7\textwidth]{esfNetVis4}
   \caption{
-  }\label{esfnetvis}
+  The layout is rotated in order to focus on the intermediary segment of the sinusoid.
+  The text area shows information about specific snapshots, given on-demand. The user requests the information by pressing "S" while the snapshot is being visualized.
+  the nodes in the intermediary sectors are being highlighted on-demand by the user: notice the pointer which is over the intermediary sector timeline.
+  }\label{env4}
 \end{figure}
 One basic feature of the method is the constant representation of
 nodes in each of the hubs, intermediary and peripheral sectors.
@@ -260,7 +282,6 @@ classification within the snapshot.
 Following the analytic methods used in~\cite{stab}, it may be crucial
 to know how the relative sizes of the sectors vary along time, i.e. along
 the sequence of snapshots.
-
 
 \section{Insights gathered}\label{sec:ins}
 This section describes insights gathered by the authors,
