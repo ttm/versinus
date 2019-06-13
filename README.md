@@ -19,6 +19,9 @@ It has since then received four implementations:
 ## public interactive interfaces 
 * http://rfabbri.vicg.icmc.usp.br:3000/evolution
 * http://rfabbri.vicg.icmc.usp.br:3000/evolution/dev
+* http://rfabbri.vicg.icmc.usp.br:3000/evolution/evo
+
+Disclaimer: these interfaces are subject to experimentation by the researchers, and may be found in transitional stages. Get in contact if not able to use them.
 
 ### available videos
 Some animations obtained using the Versinus method (and the scripts mentioned above) 
