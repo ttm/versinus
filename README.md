@@ -14,7 +14,11 @@ It has since then received four implementations:
 * a Python script that renders animations though stop-motion, available in legacy/sistemaMinimo_5000Py3.py
 * Python functionalities made available though packages. These packages enable the rendering of animations with soundtracks, both obtained by mapping of the evolving network. The packages needed are [gmaneLegacy](https://github.com/ttm/gmaneLegacy) and [musicLegacy](https://github.com/ttm/musicLegacy). After installing them, run the script tests/testEvolutionMusicPy3.py in the gmaneLegacy tree.
 * a lightweight Javascript implementation in [ccNetViz](https://github.com/HelikarLab/ccNetViz) for static networks.
-* a Javascript implementation using BabylonJS for interactive data analysis (Visual Analytics): https://github.com/ttm/netText.
+* a Javascript implementation for interactive data visualization: https://github.com/ttm/netText.
+
+## public interactive interfaces 
+* http://rfabbri.vicg.icmc.usp.br:3000/evolution
+* http://rfabbri.vicg.icmc.usp.br:3000/evolution/dev
 
 ### available videos
 Some animations obtained using the Versinus method (and the scripts mentioned above) 
